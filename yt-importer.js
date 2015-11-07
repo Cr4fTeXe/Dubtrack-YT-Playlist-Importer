@@ -114,6 +114,8 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                                         callback();
                                     }).error(function(x) { YTImporter._displayOutput('Failed to import song ' + title + '(#' + index + ').', true); console.log(x); callback(); });
                             });
+                        }else{
+                            callback();
                         }
                     }
 
