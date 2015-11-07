@@ -85,7 +85,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     pageCount++;
                     while(c <= 50 * pageCount){
                         //var datpush = jQuery.makeArray(data.items[c]);
-                        console.log(c + "donechecktoken" + data.items[c]);
+                        console.log(c + "  donechecktoken  " + data.items[c].contentDetails.videoId);
                         apiData.push(data.items[c]);
                         c++;
                     }
@@ -105,7 +105,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     
                     while(c <= 49){
                         //var datpush = jQuery.makeArray(data.items[c]);
-                        console.log(data.items[c]);
+                        console.log(data.items[c] + "testesteste");
                         apiData.push(data.items[c]);
                         c++;
                     }
