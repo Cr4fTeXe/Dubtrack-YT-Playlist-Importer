@@ -75,12 +75,19 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
         //getAllVideosOfPlaylist Cr4fTeXe
             var totalVids; //total Videos in Playlist
             var nPage; // Id of the next Page
-            var apiData = {}; // Data from all API calls 
+            var apiData = []; // Data from all API calls 
+            var c = 0;
+            var pageCount = 0;
             
             function checkForToken(token){ //If there is a next Page in the Playlist -> save the Content in apiData and check if there is another next Page
                  $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey, pageToken: token })
                 .done(function(data) {
-                    apiData+= data;
+                    pageCount++;
+                    while(c <= 50 * pageCount){
+                        console.log(data.items[c] + "checktoken");
+                        apiData.push(data.items[c]);
+                        c++;
+                    }
                     if(data.nextPageToken){
                         checkForToken(data.nextPageToken);
                     }
@@ -94,7 +101,12 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
 
 
                     //getAllVideosOfPlaylist Cr4fTeXe
-                    apiData += data; // Data of the API call
+                    
+                    while(c <= 50){
+                        apiData.push(data.items[c]);
+                        c++;
+                    }
+                    pageCount++;
                     totalVids = data.pageInfo.totalResults; //get total Number of Videos in Playlist
                     if(data.nextPageToken){
                         nPage = data.nextPageToken;
@@ -122,14 +134,14 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     //Loop for executing importAtIndex for every Video Cr4fTeXe
                     var i = -1;
                     var importLoop = function() {
-                        console.log(data.items);
                         i++;
+                        console.log(apiData[i] + "importloop");
                         if(i >= /*getAllVideosOfPlaylist Cr4fTeXe*/ totalVids /*old: data.items.length*/ ) {
                             YTImporter._displayOutput('Done importing to ' + playlistName + '! Reloading page to see results.', true);
                             location.reload();
                             return;
                         }
-                        else importAtIndex(i, importLoop, data.items[i]);
+                        else importAtIndex(i, importLoop, apiData[i]);
                     };
 
                     importLoop();
