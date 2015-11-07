@@ -74,8 +74,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     
                     
                 })
-                    
-                //if(parseInt((totalVids / 50), 10) < pageCount){ returntoImport(); }
+                
             }
         //
 
@@ -83,8 +82,8 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
             $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey })
                 .done(function(data) {
 
+                    totalVids = data.pageInfo.totalResults;
 
-                    //getAllVideosOfPlaylist Cr4fTeXe
                     if(data.nextPageToken){
                         console.log("big Playlist");
                         while(c <= 49){
@@ -102,7 +101,6 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     }
 
                     pageCount++;
-                    totalVids = data.pageInfo.totalResults; //get total Number of Videos in Playlist
                     if(data.nextPageToken){
                         nPage = data.nextPageToken;
                         checkForToken(nPage);
