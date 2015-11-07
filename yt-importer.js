@@ -54,7 +54,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
             function checkForToken(token){ //If there is a next Page in the Playlist -> save the Content in apiData and check if there is another next Page
                  $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey, pageToken: token })
                 .done(function(data) {
-console.log("PageToken: "+token+" Page-Count: "+pageCount); //warum funktionierst du nicht :(
+console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     pageCount++;
                     
                     var i = 0;
@@ -68,9 +68,10 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount); //warum funktioniers
 
                     if(data.nextPageToken){ checkForToken(data.nextPageToken); }
                     
-                    if(parseInt((totalVids / 50), 10) == pageCount){ returntoImport(); }
                     
                 })
+                    
+                    if(parseInt((totalVids / 50), 10) == pageCount){ returntoImport(); }
             }
         //
 
