@@ -106,7 +106,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
 console.log("Imported Video #"+index+" with Id: "+videoid);
                         $.getJSON('https://www.googleapis.com/youtube/v3/videos', { part: 'snippet', id: videoid, key: YTImporter._googleApiKey })
                             .done(function(data) {
-                                if(data.items[0].snippet.title != undefined){
+                                if(data.items[0].snippet.title){
                                     var title = data.items[0].snippet.title;
                                     YTImporter._displayOutput('Importing song ' + title + '.', false);
                                     $.post('https://api.dubtrack.fm/playlist/' + targetPlaylistId + '/songs', { 'fkid': videoid, 'type': 'youtube' }, null, 'json')
