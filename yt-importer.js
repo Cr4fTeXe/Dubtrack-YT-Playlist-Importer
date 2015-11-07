@@ -102,17 +102,21 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     function importAtIndex(index, callback, video) {
                         YTImporter._displayOutput('Getting next song of playlist (song #' + index + ')', false);
                         var videoid = video.contentDetails.videoId;
-                        if(videoid != undefined){
+                        if(videoid){
 console.log("Imported Video #"+index+" with Id: "+videoid);
                         $.getJSON('https://www.googleapis.com/youtube/v3/videos', { part: 'snippet', id: videoid, key: YTImporter._googleApiKey })
                             .done(function(data) {
-                                var title = data.items[0].snippet.title;
-                                YTImporter._displayOutput('Importing song ' + title + '.', false);
-                                $.post('https://api.dubtrack.fm/playlist/' + targetPlaylistId + '/songs', { 'fkid': videoid, 'type': 'youtube' }, null, 'json')
-                                    .done(function() {
-                                        YTImporter._displayOutput('Imported song ' + title + '(#' + index + ').', true);
-                                        callback();
-                                    }).error(function(x) { YTImporter._displayOutput('Failed to import song ' + title + '(#' + index + ').', true); console.log(x); callback(); });
+                                if(data.items[0].snippet.title){
+                                    var title = data.items[0].snippet.title;
+                                    YTImporter._displayOutput('Importing song ' + title + '.', false);
+                                    $.post('https://api.dubtrack.fm/playlist/' + targetPlaylistId + '/songs', { 'fkid': videoid, 'type': 'youtube' }, null, 'json')
+                                        .done(function() {
+                                            YTImporter._displayOutput('Imported song ' + title + '(#' + index + ').', true);
+                                            callback();
+                                        }).error(function(x) { YTImporter._displayOutput('Failed to import song ' + title + '(#' + index + ').', true); console.log(x); callback(); });
+                                }else{
+                                    callback();
+                                }
                             });
                         }else{
                             callback();
