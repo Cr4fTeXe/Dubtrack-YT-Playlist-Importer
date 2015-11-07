@@ -84,7 +84,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                 .done(function(data) {
                     pageCount++;
                     while(c <= 50 * pageCount){
-                        var datpush = $.makeArray(data.items[c]);
+                        var datpush = jQuery.makeArray(data.items[c]);
                         console.log(datpush + "donechecktoken");
                         apiData.push(datpush);
                         c++;
@@ -104,7 +104,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     //getAllVideosOfPlaylist Cr4fTeXe
                     
                     while(c <= 50){
-                        var datpush = $.makeArray(data.items[c]);
+                        var datpush = jQuery.makeArray(data.items[c]);
                         apiData.push(datpush);
                         c++;
                     }
