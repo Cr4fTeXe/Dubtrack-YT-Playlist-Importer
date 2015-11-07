@@ -105,6 +105,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     
                     while(c <= 49){
                         //var datpush = jQuery.makeArray(data.items[c]);
+                        console.log(data.items[x]);
                         apiData.push(data.items[c]);
                         c++;
                     }
