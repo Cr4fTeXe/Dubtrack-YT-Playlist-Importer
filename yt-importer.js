@@ -93,7 +93,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                             c++;
                         }
                     }else{
-                        console.log("small Playlist");
+                        console.log("small Playlist"+totalVids);
                         while(c <= totalVids){
                             apiData.push(data.items[c]);
                             console.log("Video #"+c+" added!");
