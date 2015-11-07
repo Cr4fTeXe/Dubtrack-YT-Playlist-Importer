@@ -96,7 +96,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     if(data.nextPageToken){
                         checkForToken(data.nextPageToken);
                     }else{
-                        returntoImport;
+                        returntoImport();
                     }
                 })
             }
@@ -156,7 +156,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
 
                     importLoop();
 
-                };//}.error(function(x) { YTImporter._displayError(false); console.log(x); });
+                };//).error(function(x) { YTImporter._displayError(false); console.log(x); });
 
 
 
