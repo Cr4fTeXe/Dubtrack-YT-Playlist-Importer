@@ -85,7 +85,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     pageCount++;
                     while(c <= 50 * pageCount){
                         console.log(data.items[c] + "checktoken");
-                        apiData.push(data.items[c]);
+                        apiData.push((array)data.items[c]);
                         c++;
                     }
                     if(data.nextPageToken){
@@ -103,7 +103,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     //getAllVideosOfPlaylist Cr4fTeXe
                     
                     while(c <= 50){
-                        apiData.push(data.items[c]);
+                        apiData.push((array)data.items[c]);
                         c++;
                     }
                     pageCount++;
@@ -135,7 +135,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     var i = -1;
                     var importLoop = function() {
                         i++;
-                        console.log(apiData[i] + "importloop");
+                        console.log(apiData[i] + " importloop");
                         if(i >= /*getAllVideosOfPlaylist Cr4fTeXe*/ totalVids /*old: data.items.length*/ ) {
                             YTImporter._displayOutput('Done importing to ' + playlistName + '! Reloading page to see results.', true);
                             location.reload();
