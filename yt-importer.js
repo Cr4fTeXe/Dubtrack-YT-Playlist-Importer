@@ -4,9 +4,9 @@ $("body").append('<link rel="stylesheet" type="text/css" href="https://cdn.rawgi
 
 $(".header-right-navigation").append($('<div class="yt-import" onclick="$(".import-input").slideToggle()"><img src="https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg" alt="import"></div>'));
 
-$("body").append($('<div class="import-input"><div class="import-inner"><input type="text" id="ytu" name="Youtube Username" title="Youtube Username" value="" placeholder="Enter Youtube-Username here"><input type="text" id="ytpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name here"><input type="text" id="dtpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name here"><button class="import_submit" onclick="YTImporter.import($("#ytu").val(), $("#ytpl").val(), $("#dtpl").val()" title="Submit"></div></div>'));
+$("body").append($('<div class="import-input"><div class="import-inner"><input type="text" id="ytu" name="Youtube Username" title="Youtube Username" value="" placeholder="Enter Youtube-Username"><input type="text" id="ytpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name"><input type="text" id="dtpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name"><button class="import_submit" onclick="YTImporter.import($("#ytu").val(), $("#ytpl").val(), $("#dtpl").val()" title="Submit Data">Submit</button></div></div>'));
 
-console.log("sozusagen top");
+console.log("YT-Import Script reworked by Cr4fTeXe.");
 
 var YTImporter = {
     _googleApiKey: 'AIzaSyC5uhOXO7XWm8A6FtikRDGKfv50XCpqYxA',
