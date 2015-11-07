@@ -100,12 +100,14 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                             c++;
                         }
                     }
-                    
+
                     pageCount++;
                     totalVids = data.pageInfo.totalResults; //get total Number of Videos in Playlist
                     if(data.nextPageToken){
                         nPage = data.nextPageToken;
                         checkForToken(nPage);
+                    }else{
+                        returntoImport();
                     }
                     //
 
