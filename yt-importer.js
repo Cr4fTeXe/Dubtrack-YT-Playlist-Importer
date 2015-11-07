@@ -95,9 +95,10 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     }
                     if(data.nextPageToken){
                         checkForToken(data.nextPageToken);
-                    }else{
-                        returntoImport();
                     }
+                    
+                    if(parseInt((totalVids / 50), 10) == pageCount){returntoImport();}
+                    
                 })
             }
         //
