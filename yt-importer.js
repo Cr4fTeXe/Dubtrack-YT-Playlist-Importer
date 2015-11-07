@@ -86,18 +86,21 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
 
                     //getAllVideosOfPlaylist Cr4fTeXe
                     if(data.nextPageToken){
+                        console.log("big Playlist");
                         while(c <= 49){
                             apiData.push(data.items[c]);
                             console.log("Video #"+c+" added!");
                             c++;
                         }
                     }else{
+                        console.log("small Playlist");
                         while(c <= totalVids){
                             apiData.push(data.items[c]);
                             console.log("Video #"+c+" added!");
                             c++;
                         }
                     }
+                    
                     pageCount++;
                     totalVids = data.pageInfo.totalResults; //get total Number of Videos in Playlist
                     if(data.nextPageToken){
