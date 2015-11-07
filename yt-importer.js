@@ -3,7 +3,7 @@
 $("body").append('<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Cr4fTeXe/Dubtrack-YT-Playlist-Importer/master/yt-importer.css">');
 
 $(".header-right-navigation").append($('<div class="yt-import" onclick="$(".import-input").slideToggle()">
-    <img src="https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg" alt>
+    <img src="https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg" alt="Nav-Bild">
 </div>'));
 
 $("body").append($('
