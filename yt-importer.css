@@ -1,0 +1,23 @@
+.yt-import{
+	font-size: 1.2rem;
+	line-height: 1.2;
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 1rem;
+	width: 21px;
+}
+.import-input{
+	width: 320px;
+	position: absolute;
+	height: calc(100% - 112px);
+	right: 0px;
+	top: 56px;
+	z-index: 100;
+	background: #1A1A1A !important;
+}
+.import-inner{
+	width: 80%;
+	margin: 0 auto;
+}
