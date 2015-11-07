@@ -1,7 +1,7 @@
 /* Experimental, may not work. */
 
 if(!$("body").hasClass("import_MP")){
-$("body").append('<link rel="stylesheet" type="text/css" href="https://rawgit.com/Cr4fTeXe/Dubtrack-YT-Playlist-Importer/master/yt-importer.css">');
+$("body").prepend('<link rel="stylesheet" type="text/css" href="https://rawgit.com/Cr4fTeXe/Dubtrack-YT-Playlist-Importer/master/yt-importer.css">');
 $(".header-right-navigation").append($('<div class="yt-import" onclick="$(".import-input").slideToggle()"><img src="https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg" alt="import"></div>'));
 $("body").append($('<div class="import-input"><div class="import-inner"><input type="text" id="ytu" name="Youtube Username" title="Youtube Username" value="" placeholder="Enter Youtube-Username"><input type="text" id="ytpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name"><input type="text" id="dtpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name"><button class="import_submit" onclick="YTImporter.import($("#ytu").val(), $("#ytpl").val(), $("#dtpl").val()" title="Submit Data">Submit</button></div></div>'));
 $("body").addClass("import_MP");
