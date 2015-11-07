@@ -119,6 +119,7 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                                 }
                             });
                         }else{
+                            console.log("Video deleted/private.");
                             callback();
                         }
                     }
