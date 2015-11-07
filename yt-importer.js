@@ -137,7 +137,8 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                     var i = -1;
                     var importLoop = function() {
                         i++;
-                        if(i >= totalVids ) {
+                        var lastVid = totalVids - 1;
+                        if(i >= lastVids ) {
                             YTImporter._displayOutput('Done importing to ' + playlistName + '! Reloading page to see results.', true);
                             location.reload();
                             return;
