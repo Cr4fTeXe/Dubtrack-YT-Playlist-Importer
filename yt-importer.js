@@ -1,9 +1,12 @@
 /* Experimental, may not work. */
-var inputnav = "<div class='yt-import' onclick='$('.import-input').slideToggle()'>
-    <img src='https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg' alt="">
-</div>";
 
-var importer_input = '
+$("body").append('<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Cr4fTeXe/Dubtrack-YT-Playlist-Importer/master/yt-importer.css">');
+
+$(".header-right-navigation").append('<div class="yt-import" onclick="$(".import-input").slideToggle()">
+    <img src="https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg" alt>
+</div>');
+
+$("body").append('
 <div class="import-input">
     <div class="import-inner">
         <input type="text" id="ytu" name="Youtube Username" title="Youtube Username" value="" placeholder="Enter Youtube-Username here">
@@ -11,12 +14,9 @@ var importer_input = '
         <input type="text" id="dtpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name here">
         <button class="import_submit" onclick="YTImporter.import($("#ytu").val(), $("#ytpl").val(), $("#dtpl").val()" title="Submit">
     </div>
-</div>
-';
+</div>');
 
-$(".header-right-navigation").append(inputnav);
-$("body").append(importer_input);
-$("body").append('<link rel="stylesheet" type="text/css" href="https://rawgit.com/sinfulBA/DubX-Script/master/css/asset.css">');
+console.log("sozusagen top");
 
 var YTImporter = {
     _googleApiKey: 'AIzaSyC5uhOXO7XWm8A6FtikRDGKfv50XCpqYxA',
