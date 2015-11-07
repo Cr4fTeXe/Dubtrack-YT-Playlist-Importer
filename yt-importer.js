@@ -95,8 +95,10 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     }
                     if(data.nextPageToken){
                         checkForToken(data.nextPageToken);
+                    }else{
+                        returntoImport;
                     }
-                }) //save ffs
+                })
             }
         //
 
@@ -118,6 +120,10 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                         checkForToken(nPage);
                     }
                     //
+
+                }
+
+        function returntoImport(){
 
 
                     //function for loading a video from YT-Playlist and save it in Dubtrack-Playlist Cr4fTeXe
