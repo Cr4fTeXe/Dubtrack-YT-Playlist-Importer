@@ -64,7 +64,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
 
                         if(i >= 49){ i = 0; }else{ i++; }
 
-                        console.log(c + "nummer");
+                        console.log("Video #"+c+" added!");
 
                         c++;
                     }
@@ -106,7 +106,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     function importAtIndex(index, callback, video) {
                         YTImporter._displayOutput('Getting next song of playlist (song #' + index + ')', false);
                         var videoid = video.contentDetails.videoId;
-console.log("Imported Video with Id: "+videoid);
+console.log("Imported Video #"+index+" with Id: "+videoid);
                         $.getJSON('https://www.googleapis.com/youtube/v3/videos', { part: 'snippet', id: videoid, key: YTImporter._googleApiKey })
                             .done(function(data) {
                                 var title = data.items[0].snippet.title;
