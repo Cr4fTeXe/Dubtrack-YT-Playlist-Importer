@@ -138,7 +138,6 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     var importLoop = function() {
                         i++;
                         console.log(apiData[i]);
-                        console.log(apiData[i].contentDetails.videoId + " imported");
                         if(i >= totalVids ) {
                             YTImporter._displayOutput('Done importing to ' + playlistName + '! Reloading page to see results.', true);
                             location.reload();
