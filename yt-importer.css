@@ -25,14 +25,16 @@
 	border: 1px solid !important;
 	margin-bottom: 10px !important;
 }
+#ytu{
+	margin-top: 20px;
+}
 .import_submit{
 	width: 100% !important;
 	height: 30px !important;
 	color: #1A1A1A !important;
 }
 .importer-title{
-	margin-bottom: 20px;
-	font-size: 20px;
+	font-size: 18px;
 	color: #AA74FE;
 }
-}
+
