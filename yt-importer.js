@@ -1,5 +1,3 @@
-/* Experimental, may not work. */
-
 if(!$("body").hasClass("import_MP")){
 $("body").prepend('<link rel="stylesheet" type="text/css" href="https://rawgit.com/Cr4fTeXe/Dubtrack-YT-Playlist-Importer/master/yt-importer.css">');
 $(".header-right-navigation").append($('<div class="yt-import"><img src="http://icons.iconarchive.com/icons/webalys/kameleon.pics/512/Settings-2-icon.png" alt="import"></div>'));
@@ -43,16 +41,13 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
     function inner() {
         var targetPlaylistId;
         function inner() {
-
-
-        //getAllVideosOfPlaylist Cr4fTeXe
             var totalVids = 0;
             var nPage;
             var apiData = [];
             var c = 0;
             var pageCount = 0;
             
-            function checkForToken(token){ //If there is a next Page in the Playlist -> save the Content in apiData and check if there is another next Page
+            function checkForToken(token){
                  $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey, pageToken: token })
                 .done(function(data) {
 console.log("PageToken: "+token+" Page-Count: "+pageCount);
@@ -71,13 +66,8 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     }
 
                     if(data.nextPageToken){ checkForToken(data.nextPageToken); }else{ returntoImport(); }
-                    
-                    
                 })
-                
             }
-        //
-
 
             $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey })
                 .done(function(data) {
@@ -108,14 +98,9 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     }else{
                         returntoImport();
                     }
-                    //
-
                 })
 
         function returntoImport(){
-
-
-                    //function for loading a video from YT-Playlist and save it in Dubtrack-Playlist Cr4fTeXe
                     function importAtIndex(index, callback, video) {
                         YTImporter._displayOutput('Getting next song of playlist (song #' + index + ')', false);
                         var videoid = video.contentDetails.videoId;
@@ -132,7 +117,6 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                             });
                     }
 
-                    //Loop for executing importAtIndex for every Video Cr4fTeXe
                     var i = -1;
                     var importLoop = function() {
                         i++;
@@ -143,13 +127,8 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                         }
                         else importAtIndex(i, importLoop, apiData[i]);
                     };
-
                     importLoop();
-
                 };
-
-
-
         }
 
 
@@ -167,6 +146,7 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                 }
             });
         }
+        
         if(!targetPlaylistId) {
             YTImporter._displayOutput("Given Dubtrack Playlist not found. Making one...", false);
             $.post('https://api.dubtrack.fm/playlist', { name: playlistName ? playlistName : yt_playlistTitle })
