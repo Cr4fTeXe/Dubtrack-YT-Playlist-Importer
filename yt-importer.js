@@ -59,6 +59,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     pageCount++;
                     
                     var i = 0;
+                    c++
                     while(c <= 50 * pageCount){
                         apiData.push(data.items[i]);
 
@@ -87,6 +88,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     
                     while(c <= 49){
                         apiData.push(data.items[c]);
+                        console.log("Video #"+c+" added!");
                         c++;
                     }
                     pageCount++;
