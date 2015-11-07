@@ -74,7 +74,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     if(data.nextPageToken){
                         checkForToken(data.nextPageToken);
                     }
-                }
+                })
             }
         //
 
