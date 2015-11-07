@@ -1,6 +1,6 @@
 /* Experimental, may not work. */
 var inputnav = "<div class='yt-import' onclick='$('.import-input').slideToggle()'>
-    <img src='https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg' alt>
+    <img src='https://rawgit.com/sinfulBA/DubX-Script/master/params/params.svg' alt="">
 </div>";
 
 var importer_input = '
