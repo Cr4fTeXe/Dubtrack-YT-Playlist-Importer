@@ -68,7 +68,9 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
 
                     if(data.nextPageToken){ checkForToken(data.nextPageToken); }
                     
-                    if(parseInt((totalVids / 50), 10) == pageCount){ returntoImport(); }
+                    if(parseInt((totalVids / 50), 10) == pageCount){ pageCount++; }
+                    if(parseInt((totalVids / 50), 10) == pageCount--){ returntoImport(); }
+
                     
                 })
             }
