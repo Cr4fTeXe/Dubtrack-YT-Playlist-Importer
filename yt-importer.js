@@ -82,15 +82,15 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
             function checkForToken(token){ //If there is a next Page in the Playlist -> save the Content in apiData and check if there is another next Page
                  $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey, pageToken: token })
                 .done(function(data) {
+                    console.log("PageToken: "+token+" Page Count: "+pageCount);
                     pageCount++;
                         var i = 0;
                     while(c <= 50 * pageCount){
+
                         apiData.push(data.items[i]);
-                        if(i >= 49){
-                            i = 0;
-                        }else{
-                            i++;
-                        }
+
+                        if(i >= 49){ i = 0; }else{ i++; }
+
                         c++;
                     }
                     if(data.nextPageToken){
@@ -109,7 +109,6 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     
                     while(c <= 49){
                         apiData.push(data.items[c]);
-                        console.log(apiData + "   ersterapidata");
                         c++;
                     }
                     pageCount++;
@@ -141,7 +140,6 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     var i = -1;
                     var importLoop = function() {
                         i++;
-                        console.log(apiData[i]);
                         if(i >= totalVids ) {
                             YTImporter._displayOutput('Done importing to ' + playlistName + '! Reloading page to see results.', true);
                             location.reload();
