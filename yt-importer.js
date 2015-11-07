@@ -83,10 +83,16 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                  $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey, pageToken: token })
                 .done(function(data) {
                     pageCount++;
+                        var i = 0;
                     while(c <= 50 * pageCount){
-                        console.log(c + "  donechecktoken  " + data.items[c].contentDetails.videoId);
-                        apiData.push(data.items[c]);
+                        console.log(c + "  donechecktoken  " + i + " - " + data.items[i].contentDetails.videoId);
+                        apiData.push(data.items[i]);
                         console.log(apiData + "   apiData-pur   ");
+                        if(i <= 49){
+                            i++;
+                        }else{
+                            i = 0;
+                        }
                         c++;
                     }
                     if(data.nextPageToken){
