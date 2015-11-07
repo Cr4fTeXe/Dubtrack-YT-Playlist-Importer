@@ -122,6 +122,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     //Loop for executing importAtIndex for every Video Cr4fTeXe
                     var i = -1;
                     var importLoop = function() {
+                        console.log(data.items);
                         i++;
                         if(i >= /*getAllVideosOfPlaylist Cr4fTeXe*/ totalVids /*old: data.items.length*/ ) {
                             YTImporter._displayOutput('Done importing to ' + playlistName + '! Reloading page to see results.', true);
