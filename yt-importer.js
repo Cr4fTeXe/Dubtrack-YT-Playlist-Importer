@@ -76,14 +76,12 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     console.log("Total Videos in Playlist: "+totalVids);
 
                     if(data.nextPageToken){
-                        console.log("big Playlist");
                         while(c <= 49){
                             apiData.push(data.items[c]);
                             console.log("Video #"+c+" added!");
                             c++;
                         }
                     }else{
-                        console.log("small Playlist");
                         while(c <= totalVids){
                             apiData.push(data.items[c]);
                             console.log("Video #"+c+" added!");
@@ -104,6 +102,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     function importAtIndex(index, callback, video) {
                         YTImporter._displayOutput('Getting next song of playlist (song #' + index + ')', false);
                         var videoid = video.contentDetails.videoId;
+                        if(videoid){
 console.log("Imported Video #"+index+" with Id: "+videoid);
                         $.getJSON('https://www.googleapis.com/youtube/v3/videos', { part: 'snippet', id: videoid, key: YTImporter._googleApiKey })
                             .done(function(data) {
@@ -113,8 +112,9 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                                     .done(function() {
                                         YTImporter._displayOutput('Imported song ' + title + '(#' + index + ').', true);
                                         callback();
-                                    }).error(function(x) { YTImporter._displayOutput('Failed to import song ' + title + '(#' + index + ').', true); console.log(x); });
+                                    }).error(function(x) { YTImporter._displayOutput('Failed to import song ' + title + '(#' + index + ').', true); console.log(x); callback(); });
                             });
+                        }
                     }
 
                     var i = -1;
