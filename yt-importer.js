@@ -71,7 +71,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     
                 })
                     
-                    if(parseInt((totalVids / 50), 10) == pageCount){ returntoImport(); }
+                if(parseInt((totalVids / 50), 10) < pageCount){ returntoImport(); }
             }
         //
 
