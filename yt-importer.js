@@ -104,7 +104,8 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
                     //getAllVideosOfPlaylist Cr4fTeXe
                     
                     while(c <= 50){
-                        apiData.push((array)data.items[c]);
+                        var datpush =  datpush.makeArray(data.items[c]);
+                        apiData.push(datpush);
                         c++;
                     }
                     pageCount++;
