@@ -10,6 +10,7 @@ console.log("YT-Import Script reworked by Cr4fTeXe.");
     console.log("YT-Import already loaded!")
 }
 $(document).ready(function(){
+    $('.import-input').slideToggle(0);
     $(".yt-import").on("click", function(){
         $('.import-input').slideToggle();
     })
@@ -61,7 +62,9 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     while(c <= 50 * pageCount){
                         apiData.push(data.items[i]);
 
-                        if(i >= 50){ i = 0; }else{ i++; }
+                        if(i >= 49){ i = 0; }else{ i++; }
+
+                        console.log(c + "nummer");
 
                         c++;
                     }
