@@ -66,12 +66,12 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                         c++;
                     }
 
-                    if(data.nextPageToken){ checkForToken(data.nextPageToken); }
+                    if(data.nextPageToken){ checkForToken(data.nextPageToken); }else{ returntoImport(); }
                     
                     
                 })
                     
-                if(parseInt((totalVids / 50), 10) < pageCount){ returntoImport(); }
+                //if(parseInt((totalVids / 50), 10) < pageCount){ returntoImport(); }
             }
         //
 
