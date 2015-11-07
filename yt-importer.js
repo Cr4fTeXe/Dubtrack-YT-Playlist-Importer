@@ -3,7 +3,7 @@
 if(!$("body").hasClass("import_MP")){
 $("body").prepend('<link rel="stylesheet" type="text/css" href="https://rawgit.com/Cr4fTeXe/Dubtrack-YT-Playlist-Importer/master/yt-importer.css">');
 $(".header-right-navigation").append($('<div class="yt-import"><img src="http://icons.iconarchive.com/icons/webalys/kameleon.pics/512/Settings-2-icon.png" alt="import"></div>'));
-$("body").append($('<div class="import-input"><div class="import-inner"><input type="text" id="ytu" name="Playlist-ID" title="Playlist-ID" value="" placeholder="Enter YT Playlist-ID"><input type="text" id="ytpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name"><input type="text" id="dtpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name"><button class="import_submit" title="Submit Data">Submit</button></div></div>'));
+$("body").append($('<div class="import-input"><div class="import-inner"><span class="importer-title">Youtube-Importer by Cr4fTeXe</span></br><input type="text" id="ytu" name="Playlist-ID" title="Playlist-ID" value="" placeholder="Enter YT Playlist-ID"><input type="text" id="ytpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name"><input type="text" id="dtpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name"><button class="import_submit" title="Submit Data">Submit</button></div></div>'));
 $("body").addClass("import_MP");
 console.log("YT-Import Script reworked by Cr4fTeXe.");    
 }else{
