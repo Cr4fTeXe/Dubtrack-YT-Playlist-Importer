@@ -21,3 +21,12 @@
 	width: 80%;
 	margin: 0 auto;
 }
+#ytu, #ytpl, #dtpl{
+	border: 1px solid;
+	margin-bottom: 10px;
+}
+.import_submit{
+	width: 100%;
+	height: 30px;
+	color: #1A1A1A;
+}
