@@ -3,15 +3,20 @@
 if(!$("body").hasClass("import_MP")){
 $("body").prepend('<link rel="stylesheet" type="text/css" href="https://rawgit.com/Cr4fTeXe/Dubtrack-YT-Playlist-Importer/master/yt-importer.css">');
 $(".header-right-navigation").append($('<div class="yt-import"><img src="http://icons.iconarchive.com/icons/webalys/kameleon.pics/512/Settings-2-icon.png" alt="import"></div>'));
-$("body").append($('<div class="import-input"><div class="import-inner"><span class="importer-title">Youtube-Importer by <a href="http://cr4ftexe.com/">Cr4fTeXe</a></span><input type="text" id="ytu" name="Playlist-ID" title="Playlist-ID" value="" placeholder="Enter YT Playlist-ID"><input type="text" id="ytpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name"><input type="text" id="dtpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name"><button class="import_submit" title="Submit Data">Submit</button></div></div>'));
+$("body").append($('<div class="import-input"><div class="import-inner"><span class="importer-title">Youtube-Importer by Cr4fTeXe</span></br><input type="text" id="ytu" name="Playlist-ID" title="Playlist-ID" value="" placeholder="Enter YT Playlist-ID"><input type="text" id="ytpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name"><input type="text" id="dtpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name"><button class="import_submit" title="Submit Data">Submit</button></div></div>'));
 $("body").addClass("import_MP");
 console.log("YT-Import Script reworked by Cr4fTeXe.");    
-}else{ console.log("YT-Import already loaded!")}
-
+}else{
+    console.log("YT-Import already loaded!")
+}
 $(document).ready(function(){
     $('.import-input').slideToggle(0);
-    $(".yt-import").on("click", function(){ $('.import-input').slideToggle();  })
-    $(".import_submit").on("click", function(){ YTImporter.importFromPlaylistId($("#ytu").val(), $("#ytpl").val(), $("#dtpl").val()); })
+    $(".yt-import").on("click", function(){
+        $('.import-input').slideToggle();
+    })
+    $(".import_submit").on("click", function(){
+        YTImporter.importFromPlaylistId($("#ytu").val(), $("#ytpl").val(), $("#dtpl").val());
+    })
 })
 
 var YTImporter = {
@@ -38,14 +43,16 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
     function inner() {
         var targetPlaylistId;
         function inner() {
-            
+
+
+        //getAllVideosOfPlaylist Cr4fTeXe
             var totalVids;
             var nPage;
             var apiData = [];
             var c = 0;
             var pageCount = 0;
             
-            function checkForToken(token){ 
+            function checkForToken(token){ //If there is a next Page in the Playlist -> save the Content in apiData and check if there is another next Page
                  $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey, pageToken: token })
                 .done(function(data) {
 console.log("PageToken: "+token+" Page-Count: "+pageCount);
@@ -62,29 +69,49 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
 
                         c++;
                     }
+
                     if(data.nextPageToken){ checkForToken(data.nextPageToken); }else{ returntoImport(); }
+                    
+                    
                 })
+                    
+                //if(parseInt((totalVids / 50), 10) < pageCount){ returntoImport(); }
             }
+        //
 
 
             $.getJSON('https://www.googleapis.com/youtube/v3/playlistItems', { part: 'contentDetails', playlistId: yt_playlistId, maxResults: 50, key: YTImporter._googleApiKey })
                 .done(function(data) {
-                    
-                    while(c <= 49){
-                        apiData.push(data.items[c]);
-                        console.log("Video #"+c+" added!");
-                        c++;
+
+
+                    //getAllVideosOfPlaylist Cr4fTeXe
+                    if(data.nextPageToken){
+                        while(c <= 49){
+                            apiData.push(data.items[c]);
+                            console.log("Video #"+c+" added!");
+                            c++;
+                        }
+                    }else{
+                        while(c <= totalVids){
+                            apiData.push(data.items[c]);
+                            console.log("Video #"+c+" added!");
+                            c++;
+                        }
                     }
                     pageCount++;
-                    totalVids = data.pageInfo.totalResults;
+                    totalVids = data.pageInfo.totalResults; //get total Number of Videos in Playlist
                     if(data.nextPageToken){
                         nPage = data.nextPageToken;
                         checkForToken(nPage);
                     }
+                    //
+
                 })
 
         function returntoImport(){
 
+
+                    //function for loading a video from YT-Playlist and save it in Dubtrack-Playlist Cr4fTeXe
                     function importAtIndex(index, callback, video) {
                         YTImporter._displayOutput('Getting next song of playlist (song #' + index + ')', false);
                         var videoid = video.contentDetails.videoId;
@@ -101,6 +128,7 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                             });
                     }
 
+                    //Loop for executing importAtIndex for every Video Cr4fTeXe
                     var i = -1;
                     var importLoop = function() {
                         i++;
@@ -111,9 +139,15 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                         }
                         else importAtIndex(i, importLoop, apiData[i]);
                     };
+
                     importLoop();
+
                 };
+
+
+
         }
+
 
         if(!playlistName && !yt_playlistTitle) {
             YTImporter._displayError("Given Dubtrack Playlist name is null or undefined and so it can't be used. Please give a valid Dubtrack Playlist name to continue");
