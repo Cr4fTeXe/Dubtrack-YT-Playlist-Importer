@@ -46,7 +46,7 @@ YTImporter.importFromPlaylistId = function(yt_playlistId, playlistName, yt_playl
 
 
         //getAllVideosOfPlaylist Cr4fTeXe
-            var totalVids;
+            var totalVids = 0;
             var nPage;
             var apiData = [];
             var c = 0;
@@ -83,6 +83,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                 .done(function(data) {
 
                     totalVids = data.pageInfo.totalResults;
+                    console.log("Total Videos in Playlist: "+totalVids);
 
                     if(data.nextPageToken){
                         console.log("big Playlist");
@@ -92,7 +93,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                             c++;
                         }
                     }else{
-                        console.log("small Playlist"+totalVids);
+                        console.log("small Playlist");
                         while(c <= totalVids){
                             apiData.push(data.items[c]);
                             console.log("Video #"+c+" added!");
