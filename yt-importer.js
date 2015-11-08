@@ -60,7 +60,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
 
                         if(i >= 49){ i = 0; }else{ i++; }
 
-                        console.log("Video #"+c+" added!");
+                        console.log("Video #"+c+" of "+totalVids+" added!");
 
                         c++;
                     }
