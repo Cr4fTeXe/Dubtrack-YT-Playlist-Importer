@@ -55,7 +55,7 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     
                     var i = 0;
                     c++
-                    while(c <= 50 * pageCount){
+                    while(c <= 50 * pageCount && c <= totalVids){
                         apiData.push(data.items[i]);
 
                         if(i >= 49){ i = 0; }else{ i++; }
