@@ -101,8 +101,10 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
         function returntoImport(){
                     function importAtIndex(index, callback, video) {
                         YTImporter._displayOutput('Getting next song of playlist (song #' + index + ')', false);
-                        if(video.contentDetails.videoId){
+                        if(video){
                         var videoid = video.contentDetails.videoId;
+                        }else{
+                            callback();
                         }
                         if(videoid){
 console.log("Imported Video #"+index+" with Id: "+videoid);
