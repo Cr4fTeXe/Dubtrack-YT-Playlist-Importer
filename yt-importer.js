@@ -101,7 +101,9 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
         function returntoImport(){
                     function importAtIndex(index, callback, video) {
                         YTImporter._displayOutput('Getting next song of playlist (song #' + index + ')', false);
+                        if(video.contentDetails.videoId){
                         var videoid = video.contentDetails.videoId;
+                        }
                         if(videoid){
 console.log("Imported Video #"+index+" with Id: "+videoid);
                         $.getJSON('https://www.googleapis.com/youtube/v3/videos', { part: 'snippet', id: videoid, key: YTImporter._googleApiKey })
