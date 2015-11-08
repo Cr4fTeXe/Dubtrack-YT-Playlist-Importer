@@ -18,7 +18,7 @@ $(document).ready(function(){
 })
 
 var YTImporter = {
-    _googleApiKey: 'AIzaSyA9Lig2QsgzFsLDivFRE',
+    _googleApiKey: 'AIzaSyA9Lig2QsgzFsLDivFREgXQSbZsWtGYawE',
     _displayError: function(msg) {
         if(!msg) Dubtrack.helpers.displayError('Youtube Playlist importer → Internal Error', 'Check console (F12) to see error log.');
         else Dubtrack.helpers.displayError('Youtube Playlist importer → Error', msg);
