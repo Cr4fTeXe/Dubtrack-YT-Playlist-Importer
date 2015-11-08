@@ -133,7 +133,9 @@ console.log("Video deleted/private.");
                     var importLoop = function() {
                         i++;
                         if(i >= totalVids ) {
+                            var failvideos = totalVids - c;
                             YTImporter._displayOutput('Done importing to ' + playlistName + '! Reloading page to see results.', true);
+console.log("Import finished. The Import failed on "+failvideos+" videos");
                             location.reload();
                             return;
                         }
