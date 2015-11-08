@@ -3,9 +3,9 @@ $("body").prepend('<link rel="stylesheet" type="text/css" href="https://rawgit.c
 $(".header-right-navigation").append($('<div class="yt-import"><img src="http://icons.iconarchive.com/icons/webalys/kameleon.pics/512/Settings-2-icon.png" alt="import"></div>'));
 $("body").append($('<div class="import-input"><div class="import-inner"><span class="importer-title">Youtube-Importer by Cr4fTeXe</span></br><input type="text" id="ytu" name="Playlist-ID" title="Playlist-ID" value="" placeholder="Enter YT Playlist-ID"><input type="text" id="ytpl" name="Dubtrack Playlist-Name" title="Dubtrack Playlist-Name" value="" placeholder="Enter Dubtrack Playlist-Name"><input type="text" id="dtpl" name="Youtube Playlist-Name" title="Youtube Playlist-Name" value="" placeholder="Enter Youtube Playlist-Name"><button class="import_submit" title="Submit Data">Submit</button></div></div>'));
 $("body").addClass("import_MP");
-console.log("YT-Import Script reworked by Cr4fTeXe.");    
+console.log("YT-Import Script by Cr4fTeXe loaded.");    
 }else{
-    console.log("YT-Import already loaded!")
+console.log("YT-Import already loaded!")
 }
 $(document).ready(function(){
     $('.import-input').slideToggle(0);
@@ -73,18 +73,18 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                 .done(function(data) {
 
                     totalVids = data.pageInfo.totalResults;
-                    console.log("Total Videos in Playlist: "+totalVids);
+console.log("Total Videos in Playlist: "+totalVids);
 
                     if(data.nextPageToken){
                         while(c <= 49){
                             apiData.push(data.items[c]);
-                            console.log("Video #"+c+" added!");
+console.log("Video #"+c+" of "+totalVids+" added!");
                             c++;
                         }
                     }else{
                         while(c <= totalVids){
                             apiData.push(data.items[c]);
-                            console.log("Video #"+c+" added!");
+console.log("Video #"+c+" od "+totalVids+" added!");
                             c++;
                         }
                     }
@@ -119,7 +119,7 @@ console.log("Imported Video #"+index+" with Id: "+videoid);
                                             callback();
                                         }).error(function(x) { YTImporter._displayOutput('Failed to import song ' + title + '(#' + index + ').', true); console.log(x); callback(); });
                                 }else{
-                                    console.log("Video deleted/private.");
+console.log("Video deleted/private.");
                                     callback();
                                 }
                             });
