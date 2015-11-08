@@ -107,7 +107,7 @@ console.log("Video #"+c+" od "+totalVids+" added!");
                             callback();
                         }
                         if(videoid){
-console.log("Imported Video #"+index+" with Id: "+videoid);
+console.log("Imported Video #"+index+" of "+totalVids+" with Id: "+videoid);
                         $.getJSON('https://www.googleapis.com/youtube/v3/videos', { part: 'snippet', id: videoid, key: YTImporter._googleApiKey })
                             .done(function(data) {
                                 if(data.items[0]){
