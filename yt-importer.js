@@ -55,13 +55,13 @@ console.log("PageToken: "+token+" Page-Count: "+pageCount);
                     
                     var i = 0;
                     c++
-                    while(c <= 50 * pageCount && c <= totalVids){
+                    while(c <= 50 * pageCount){
                         apiData.push(data.items[i]);
 
                         if(i >= 49){ i = 0; }else{ i++; }
-
-                        console.log("Video #"+c+" of "+totalVids+" added!");
-
+                        if(c <= totalVids){
+                            console.log("Video #"+c+" of "+totalVids+" added!");
+                        }
                         c++;
                     }
 
